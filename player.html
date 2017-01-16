@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="player.css">
+</head>
+<body>
+<div id="player">
+	<div id="video-container">
+		<video id="video" >
+	<source src="sample.mp4">
+	It seems your browser doesn't support this video format
+</video>
+	</div>
+
+	<div id="pbar-container">
+		<div id="pbar"></div>
+	</div>
+
+	<div id="buttons-container">
+		<img id="play-button" src="Assets/play.png">
+		<div id="time-field">
+			0:00/0:00
+		</div>
+		<div>    
+		    <img id="sound-button" src="Assets/volume.png">
+		</div>
+
+		<div id="sbar-container">
+				<div id="sbar"></div>
+		</div>
+
+		<div id="full-container">
+			 <img id="full-button" src="Assets/full.png">
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="player.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+
+</body>
+</html>
