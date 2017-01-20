@@ -7,14 +7,21 @@ window.addEventListener('load',function() {
 
 	playButton = document.getElementById('play-button');
 	timeField = document.getElementById('time-field');
+	soundButton = document.getElementById('sound-button');
+	sbarContainer = document.getElementById('sbar-container')
+	sbar = document.getElementById('sbar');
+	fullscreenButton = document.getElementById('full-button')
     
     video.load();
-
-
     video.addEventListener('canplay',function(){
+
     	playButton.addEventListener('click',PlayOrPause,false);
     	pbarContainer.addEventListener('click',skip,false);
     	updatePlayer();
+    	soundButton.addEventListener('click',muteOrUnmute,false);
+    	sbarContainer.addEventListener('click', changeVolume,false);
+    	fullscreenButton.addEventListener('click',fullscreen,false);
+
     }, false);
 	
 }, false);
@@ -90,3 +97,43 @@ return (minutes + ":" + seconds + "/" + totalminutes + ":" + totalseconds );
 
 }
 
+
+function muteOrUnmute(){
+	if (!video.muted) {
+		video.muted = true;
+		soundButton.src = 'Assets/muted.png';
+		sbar.style.display = 'none';
+		
+	} else{
+		video.muted = false;
+		soundButton.src = 'Assets/volume.png';
+		sbar.style.display = 'block';
+
+	}
+}
+
+function changeVolume(ev){
+    var mouseX = ev.pageX - sbarContainer.offsetLeft;
+    var width = window.getComputedStyle(sbarContainer).getPropertyValue('width');
+	width = parseFloat(width.substr(0, width.length - 2));
+
+	video.volume = (mouseX/width);
+	sbar.style.width = (mouseX/width)*100 + '%';
+	video.muted = false;
+    soundButton.src = 'Assets/volume.png';
+	sbar.style.display = 'block';
+}
+
+function fullscreen(){
+	if (video.requestFullscreen) {
+		video.requestFullscreen();
+	} else if (video.webkitRequestFullscreen){
+		video.webkitRequestFullscreen();
+	}
+	  else if (video.mozRequestFullscreen){
+		video.mozRequestFullscreen();
+	}
+	  else if (video.msRequestFullscreen){
+		video.msRequestFullscreen();
+	}
+};
