@@ -17,8 +17,8 @@ img,#pbar-container, #sbar-container{
 /* the containers */
 
 #video-container{
-	width: 1280px;
-	height: 720px;
+	width: 960px;
+	height: 540px;
 }
 
 video{
@@ -34,7 +34,7 @@ video{
 }
     #pbar{
 	    height: 7px;
-	    width: 50%;
+	    width: 0%;
 	    background-color: rgb(50,170,220);
     }
 
